@@ -12,8 +12,8 @@ aws ec2 run-instances \
 --instance-type "t3.micro" \
 --security-group-ids $SG_ID \
 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" \
---query 'Instances[0].InstanceId'\
---output text)
+--query 'Instances[0].InstanceId' \
+--output text )
 
 if [ $instance == "frontend" ]; then
    IP=$(
@@ -31,5 +31,7 @@ else
     --output text
    )
 fi
+
 echo "IP address: $IP"
+
 done

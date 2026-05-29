@@ -2,7 +2,8 @@
 
 SG_ID="sg-0cf7f41b9898cc248"  #relace with your id
 AMI_ID="ami-0220d79f3f480ecf5"
-
+ZONE_ID="Z0287928ZRJM5MOTXMPA"
+DOMAIN_NAME="anildevops90.online"
 
 for instance in $@
 do
@@ -22,6 +23,7 @@ if [ $instance == "frontend" ]; then
     --query 'Reservations[].Instances[].PublicIpAddress' \
     --output text
    )
+   RECORD_NAME="$DOMAIN_NAME"  #anildevops90.online
 else
 
    IP=$(
@@ -30,8 +32,33 @@ else
     --query 'Reservations[].Instances[].PrivateIpAddress' \
     --output text
    )
+   RECORD_NAME="$instance.$DOMIAN_NAME"  #mongodb.anildevops90.online
 fi
 
 echo "IP address: $IP"
 
+aws route53 change-resource-record-sets \
+    --hosted-zone-id $ZONE_ID \
+    --change-batch '
+    {
+  "Comment": "Updating A record",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "'$RECORD_NAME'",
+        "Type": "A",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "'$IP'"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+'
+echo "record updated for $instance"
 done

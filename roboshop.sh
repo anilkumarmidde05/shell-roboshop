@@ -32,7 +32,7 @@ else
     --query 'Reservations[].Instances[].PrivateIpAddress' \
     --output text
    )
-   RECORD_NAME="$instance.$DOMIAN_NAME"  #mongodb.anildevops90.online
+   RECORD_NAME="$instance.$DOMAIN_NAME"  #mongodb.anildevops90.online
 fi
 
 echo "IP address: $IP"

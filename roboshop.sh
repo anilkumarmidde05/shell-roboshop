@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SG_ID="sg-0cf7f41b9898cc248"
+SG_ID="sg-0cf7f41b9898cc248"  #relace with your id
 AMI_ID="ami-0220d79f3f480ecf5"
 
 

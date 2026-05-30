@@ -4,6 +4,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+Script_DIR=$PWD
 
 USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-script"
@@ -60,7 +61,7 @@ VALIDATE $? "unzip the files"
 npm install &>> $LOGS_FILE
 VALIDATE $? "Installing dependencies"
 
-cp /home/ec2-user/shell-roboshop/catalogue.service /etc/systemd/system/catalogue.service
+cp $Script_DIR/catalogue.service /etc/systemd/system/catalogue.service
 #cp catalogue.service /etc/systemd/system/catalogue.service
 VALIDATE $? "Cataglogue services setup"
 

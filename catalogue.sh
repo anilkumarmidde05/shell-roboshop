@@ -5,7 +5,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 Script_DIR=$PWD #it will call the current directory
-$Mongo_Domain=mongodb.anildevops90.online
+Mongo_Domain=mongodb.anildevops90.online
 USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-script"
 LOGS_FILE="$LOGS_FOLDER/$0.log"
@@ -75,7 +75,7 @@ dnf install mongodb-mongosh -y
 
 INDEX=$(mongosh --host $Mongo_Domain --quiet --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
 
-if [ $INDEX -le 0 ];then
+if [ $INDEX -le 0 ]; then
    mongosh --host $Mongo_Domain </app/db/master-data.js
    VALIDATE $? "Products are loading"
 

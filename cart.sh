@@ -41,7 +41,7 @@ else
    echo -e "Igonre the cart if already loaded...$Y SKIPPING $N"
 fi
 
-mkdir /app
+mkdir -p  /app
 VALIDATE $? "creating the app directory"
 
 curl -L -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip &>> $LOGS_FILE

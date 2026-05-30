@@ -54,7 +54,7 @@ VALIDATE $? "Moving to app directory"
 rm -rf /app/*  # we are doing these because if files already installed then are asking to remove those and proced next steps like unzip
 VALIDATE $? "Removing the existing code"
 
-unzip /tmp/catalogue.zp &>> $LOGS_FILE
+unzip /tmp/catalogue.zip &>> $LOGS_FILE
 VALIDATE $? "unzip the files"
 
 npm install &>> $LOGS_FILE

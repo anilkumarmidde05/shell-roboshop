@@ -30,7 +30,7 @@ VALIDATE $? "Copying mongodb repo"
 dnf install mongodb-org -y &>>$LOGS_FILE
 VALIDATE $? "Installing mongodb server"
 
-systemctl enable mongod &>>#LOGS_FILE
+systemctl enable mongod &>>$LOGS_FILE
 VALIDATE $? "Enable mongodb"
 
 systemctl start mongod

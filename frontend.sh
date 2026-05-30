@@ -43,6 +43,8 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 VALIDATE $? "Downloaded and unzipped format"
 
+rm -rf /etc/nginx/nginx.conf
+
 cp $Script_DIR/nginx.conf /etc/nginx/nginx.conf  &>> $LOGS_FILE
 VALIDATE $? "copied our nginx conf file"
 
